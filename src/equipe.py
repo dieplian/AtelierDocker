@@ -15,16 +15,10 @@ class equipe:
     
     def getPlayer (self, index):
         return self.listePlayer[index]
-    
-    def setPlayer (self, listePlayer):
-        self.listePlayer = listePlayer
 
     def addPlayer (self,newPlayer):
         self.listePlayer.append(newPlayer)
 
-        
-    def getSize(self):
-        return len(self.listePlayer)
 
     def getEquipe(self):
         return self.listePlayer

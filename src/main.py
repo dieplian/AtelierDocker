@@ -3,35 +3,42 @@ import string
 import sys
 import os
 
-module_location = r"C:\FLESTIM"
-sys.path.append(module_location)
+chemin_module = r"C:\Projets\AtelierDocker"
+chemin_dockerCompose = chemin_module + "\dockerCompose\docker-compose.yml"
 
-from data.data import data
+# sys.path.append(chemin_module)
+
+from informations.traitement import traitementDonnee
 from player.player import player
 from generateurMDP import generateurMDP
 from equipe import equipe,equipeAttaque,equipeVictime
 
 NOMBRE_EQUIPE = 10
+NOMBRE_MDP = 6
 
 # Définition de la fonction main
 def main():
-    # path = module_location+"\nomenclature.xlsx"
     equipeBleu = equipeVictime("Bleu",NOMBRE_EQUIPE,"b","Victime")
     equipeRouge = equipeAttaque("Rouge",NOMBRE_EQUIPE,"r","Attaque")
-    datastruct = data(module_location,NOMBRE_EQUIPE, equipeBleu, equipeRouge)
-    docker_compose_content = generer_docker_compose(equipeBleu.getEquipe(), equipeRouge.getEquipe())
-    dockerCompose = module_location + "\dockerCompose\docker-compose.yml"
 
-    # Écrire le contenu dans un fichier docker-compose.yml
-    with open(dockerCompose, 'w') as file:
+    traitementDonnee(chemin_module,NOMBRE_EQUIPE, equipeBleu, equipeRouge)
+
+    ecrireFichierDockerCompose(equipeBleu,equipeRouge)
+
+    attribuerVictime(equipeBleu,equipeRouge)
+
+    afficherEquipe(equipeRouge)
+    afficherEquipe(equipeBleu)
+    
+def ecrireFichierDockerCompose(equipeBleu,equipeRouge):
+    docker_compose_content = generer_docker_compose(equipeBleu.getEquipe(), equipeRouge.getEquipe())
+
+    with open(chemin_dockerCompose, 'w') as file:
         file.write(docker_compose_content)
 
     print("Le fichier docker-compose.yml a été généré avec succès.")
 
-    attribuerVictime(equipeBleu,equipeRouge)
-    afficherEquipe(equipeRouge)
-    afficherEquipe(equipeBleu)
-    
+
 def genererBlocVM(joueur,lettreEquipe):
     blocVM = (
             f"  ubuntu_{lettreEquipe}-{joueur.numeroVM}:\n"
@@ -68,16 +75,13 @@ def generer_docker_compose(equipe_bleu, equipe_rouge):
     return docker_compose
 
 def attribuerVictime(equipeBleu,equipeRouge):
-    generateur = generateurMDP(module_location)
+    generateur = generateurMDP(NOMBRE_MDP)
     for index in range(NOMBRE_EQUIPE):
-        # print(equipeRouge.getPlayer(index).afficher())
-        equipeBleu.getPlayer(index).ajouterListeMDP(generateur.genererListIndex())
-        # print(equipeBleu.getPlayer(index).afficher())
+        equipeBleu.getPlayer(index).ajouterListeMDP(generateur.genererListeMotDePasse())
 
 def afficherEquipe(equipe):
     for index in range(NOMBRE_EQUIPE):
         print(equipe.getPlayer(index).afficher())
-
 
 
 

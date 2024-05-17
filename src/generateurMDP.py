@@ -2,45 +2,37 @@ import random
 
 class generateurMDP:
 
-    NOM_DICTIONNAIRE = r"\dictionnaire.txt"
+    NOM_DICTIONNAIRE = r"dictionnaire.txt"
 
-    def __init__(self,chemin):
-        self.cheminDictionnaire = chemin + generateurMDP.NOM_DICTIONNAIRE
-        self.listeMot = self.lireMDP()
-        self.nbMDP = int(len(self.listeMot)) -1
+    def __init__(self,nbMdpJoueur):
+        self.listeDictionnaire = [] # Va contenir les mdp du fichier
+        self.nbMdpJoueur = nbMdpJoueur # Nombre de mdp dans la liste du joueur
+        self.lireDictionnaire()
+        self.nbMDPTotal = int(len(self.listeDictionnaire)) -1 # Nombre de mdp dans le dictionnaire
 
-    def lireMDP(self):
-        listeMot = []
-        with open(self.cheminDictionnaire, 'r') as file:
-            for line in file:
-                listeMot.append(line.strip())
-        return listeMot
+    def lireDictionnaire(self):
+        with open(generateurMDP.NOM_DICTIONNAIRE, 'r') as fichier:
+            for ligne in fichier:
+                self.listeDictionnaire.append(ligne.strip())
 
-    def genererNombre(self,nbMax):
-        return random.randint(0, nbMax)
 
-    def genererListIndex (self):
-        listeIndex = []
-        listeMDP = []
+    def genererListeMotDePasse(self):
+        lstPosition = []
+        lstMotsDePasseJoueur = []
         verif = True
-        for i in range(6):
-            random_number = self.genererNombre(nbMax=self.nbMDP)
-            for index in listeIndex:
+
+        for positionListe in range(self.nbMdpJoueur):
+            random_number = random.randint(0,self.nbMDPTotal)
+
+            for index in lstPosition:
                 verif = True
                 if index == random_number:
-                    i-=1
+                    positionListe-=1
                     verif = False
+                    break
               
             if verif == True:
-                listeIndex.append(random_number)
-                listeMDP.append(self.listeMot[random_number])
+                lstPosition.append(random_number)
+                lstMotsDePasseJoueur.append(self.listeDictionnaire[random_number])
 
-        return listeMDP
-    
-    def creerListe(self):
-        listeIndex = self.genererListIndex()
-
-        # for index in lis
-        return listeIndex
-
-    
+        return lstMotsDePasseJoueur
