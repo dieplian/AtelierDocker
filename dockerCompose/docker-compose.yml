@@ -1,0 +1,226 @@
+version: '3.7'
+services:
+  ubuntu_b-11:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: ventress
+        VM_USERNAME: DonnaDubinsky
+        VM_PASSWORD: Yc7gq2
+    container_name: b11-ventress
+    hostname: ventress
+    ports:
+      - '2231:22'
+  ubuntu_b-12:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: Loki
+        VM_USERNAME: IdaRhodes
+        VM_PASSWORD: Sa1Vu9
+    container_name: b12-Loki
+    hostname: Loki
+    ports:
+      - '2232:22'
+  ubuntu_b-13:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: harleyQuinn
+        VM_USERNAME: AdeleGoldberg
+        VM_PASSWORD: Zs6fj3
+    container_name: b13-harleyQuinn
+    hostname: harleyQuinn
+    ports:
+      - '2233:22'
+  ubuntu_b-14:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: agentSmith
+        VM_USERNAME: JoanClarke
+        VM_PASSWORD: Mh8yt5
+    container_name: b14-agentSmith
+    hostname: agentSmith
+    ports:
+      - '2234:22'
+  ubuntu_b-15:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: shego
+        VM_USERNAME: RobertaWilliams
+        VM_PASSWORD: Eg3hu9
+    container_name: b15-shego
+    hostname: shego
+    ports:
+      - '2235:22'
+  ubuntu_b-16:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: theJoker
+        VM_USERNAME: AliceRecoque
+        VM_PASSWORD: Rz2dc7
+    container_name: b16-theJoker
+    hostname: theJoker
+    ports:
+      - '2236:22'
+  ubuntu_b-17:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: poisonIvy
+        VM_USERNAME: StephanieShirley
+        VM_PASSWORD: Hn6tr9
+    container_name: b17-poisonIvy
+    hostname: poisonIvy
+    ports:
+      - '2237:22'
+  ubuntu_b-18:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: thanos
+        VM_USERNAME: AnnieEasley
+        VM_PASSWORD: Bf8ys2
+    container_name: b18-thanos
+    hostname: thanos
+    ports:
+      - '2238:22'
+  ubuntu_b-19:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: hela
+        VM_USERNAME: MaryWilkes
+        VM_PASSWORD: Rx3dm8
+    container_name: b19-hela
+    hostname: hela
+    ports:
+      - '2239:22'
+  ubuntu_b-20:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: Sauron
+        VM_USERNAME: AnnMakosinski
+        VM_PASSWORD: Ua7fv4
+    container_name: b20-Sauron
+    hostname: Sauron
+    ports:
+      - '2240:22'
+  ubuntu_r-1:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: ironMan
+        VM_USERNAME: GraceHopper
+        VM_PASSWORD: atorvastatin
+    container_name: r1-ironMan
+    hostname: ironMan
+    ports:
+      - '2021:22'
+  ubuntu_r-2:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: wonderWoman
+        VM_USERNAME: IsabelleCollet
+        VM_PASSWORD: warfarine
+    container_name: r2-wonderWoman
+    hostname: wonderWoman
+    ports:
+      - '2022:22'
+  ubuntu_r-3:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: donatello
+        VM_USERNAME: AdaLovelace
+        VM_PASSWORD: venlafaxine
+    container_name: r3-donatello
+    hostname: donatello
+    ports:
+      - '2023:22'
+  ubuntu_r-4:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: catWoman
+        VM_USERNAME: MargaretHamilton
+        VM_PASSWORD: enoxaparine
+    container_name: r4-catWoman
+    hostname: catWoman
+    ports:
+      - '2024:22'
+  ubuntu_r-5:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: superman
+        VM_USERNAME: DrShirleyAnnJackson
+        VM_PASSWORD: chlorthalidone
+    container_name: r5-superman
+    hostname: superman
+    ports:
+      - '2025:22'
+  ubuntu_r-6:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: blackWidow
+        VM_USERNAME: RitaLeviMontalcini
+        VM_PASSWORD: metformine
+    container_name: r6-blackWidow
+    hostname: blackWidow
+    ports:
+      - '2026:22'
+  ubuntu_r-7:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: batman
+        VM_USERNAME: MarlynMeltzer
+        VM_PASSWORD: gliclazide
+    container_name: r7-batman
+    hostname: batman
+    ports:
+      - '2027:22'
+  ubuntu_r-8:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: ghostSpider
+        VM_USERNAME: RuthTeitelbaum
+        VM_PASSWORD: sumatriptan
+    container_name: r8-ghostSpider
+    hostname: ghostSpider
+    ports:
+      - '2028:22'
+  ubuntu_r-9:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: capitainAmerica
+        VM_USERNAME: KathleenAntonelli
+        VM_PASSWORD: tamsulosine
+    container_name: r9-capitainAmerica
+    hostname: capitainAmerica
+    ports:
+      - '2029:22'
+  ubuntu_r-10:
+    build:
+      context: ../Ubuntu
+      args:
+        VM_HOSTNAME: elastoFille
+        VM_USERNAME: BettyHolberton
+        VM_PASSWORD: irbesartan
+    container_name: r10-elastoFille
+    hostname: elastoFille
+    ports:
+      - '2030:22'
+
+networks:
+  reseau:
+    driver: bridge
